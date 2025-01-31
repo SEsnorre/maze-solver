@@ -32,6 +32,7 @@ class Maze():
                 self._draw_cell(i, j,0)
         self._break_entrance_and_exit()
         self._break_walls_r(0, 0)
+        self._reset_cells_visited()
             
     def _draw_cell(self, row, col, speed=50):
         self._cells[row][col].draw()
@@ -76,6 +77,10 @@ class Maze():
             self._draw_cell(row,col,0)
             self._draw_cell(neighbor[0],neighbor[1],0)
             self._break_walls_r(neighbor[0], neighbor[1])
-            
+    
+    def _reset_cells_visited(self):
+        for i in range(self._num_rows):
+            for j in range(self._num_cols):
+                self._cells[i][j].visited = False
             
                 

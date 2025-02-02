@@ -34,22 +34,22 @@ class Cell():
         if self._edges == to_cell._edges:
             return
         if undo:
-            line_color = "red"
-        else:
             line_color = "grey"
+        else:
+            line_color = "red"
         center_from = Point((self._x1 + self._x2) // 2, (self._y1 + self._y2) // 2)
         center_to = Point((to_cell._x1 + to_cell._x2) // 2, (to_cell._y1 + to_cell._y2) // 2)
         
-        if center_to.x > center_from.x and not self.has_right_wall:
+        if center_to.x > center_from.x and not self._walls[1]:
             line = Line(center_from, center_to)
             line.draw(self._can, line_color)
-        elif center_to.x < center_from.x and not self.has_left_wall:
+        elif center_to.x < center_from.x and not self._walls[3]:
             line = Line(center_from, center_to)
             line.draw(self._can, line_color)
-        elif center_to.y > center_from.y and not self.has_bottom_wall:
+        elif center_to.y > center_from.y and not self._walls[2]:
             line = Line(center_from, center_to)
             line.draw(self._can, line_color)
-        elif center_to.y < center_from.y and not self.has_top_wall:
+        elif center_to.y < center_from.y and not self._walls[0]:
             line = Line(center_from, center_to)
             line.draw(self._can, line_color)    
         else:

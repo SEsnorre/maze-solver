@@ -5,8 +5,8 @@ from maze import Maze
         
 
 def main():
-    num_rows = 30
-    num_cols = 30
+    num_rows = 50
+    num_cols = 50
     margin = 50
     screen_x = 800
     screen_y = 800
@@ -14,6 +14,10 @@ def main():
     cell_size_y = (screen_y - 2 * margin) / num_rows
     win = Window(screen_x, screen_y)
     maze = Maze(win, margin, margin, num_rows, num_cols, cell_size_x, cell_size_y)
+    if maze.solve():
+        print("path found")
+    else:
+        print("no path found")
 
     win.wait_for_close()
     
